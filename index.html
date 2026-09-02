@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Air Quality Health Advisor</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>🌫️ Air Quality Health Advisor</h1>
+    <p class="subtitle">ตรวจสอบคุณภาพอากาศก่อนทำกิจกรรมกลางแจ้ง</p>
+
+    <div class="form-group">
+      <div class="field">
+        <label for="provinceSelect">เลือกจังหวัด:</label>
+        <select id="provinceSelect">
+          <option value="">-- กรุณาเลือกจังหวัด --</option>
+          <option value="13.7563,100.5018">กรุงเทพมหานคร</option>
+          <option value="18.7883,98.9853">เชียงใหม่</option>
+          <option value="16.4322,102.8236">ขอนแก่น</option>
+          <option value="13.3611,100.9847">ชลบุรี</option>
+          <option value="7.8804,98.3923">ภูเก็ต</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="userType">ประเภทผู้ใช้งาน:</label>
+        <select id="userType">
+          <option value="general">บุคคลทั่วไป</option>
+          <option value="children">เด็ก</option>
+          <option value="elderly">ผู้สูงอายุ</option>
+          <option value="respiratory">ผู้มีโรคทางเดินหายใจ</option>
+        </select>
+      </div>
+
+      <button id="checkBtn">🔍 ตรวจสอบคุณภาพอากาศ</button>
+    </div>
+
+    <div id="loadingState" class="state hidden">⏳ กำลังโหลดข้อมูล...</div>
+    <div id="errorState" class="state error hidden">
+      ❌ ไม่สามารถโหลดข้อมูลได้ กรุณาตรวจสอบอินเทอร์เน็ตแล้วลองใหม่
+      <br><button id="retryBtn">ลองอีกครั้ง</button>
+    </div>
+    <div id="emptyState" class="state">👆 กรุณาเลือกจังหวัดและประเภทผู้ใช้ แล้วกดตรวจสอบ</div>
+
+    <div id="resultCard" class="card hidden">
+      <div class="card-header">
+        <h2 id="cityName"></h2>
+        <span id="updateTime"></span>
+      </div>
+
+      <div id="aqiBanner" class="aqi-banner">
+        <div class="aqi-number" id="aqiValue"></div>
+        <div class="aqi-level" id="aqiLevel"></div>
+      </div>
+
+      <div class="pollutant-grid">
+        <div class="pollutant-item">
+          <span class="label">PM2.5</span>
+          <span class="value" id="pm25"></span>
+          <span class="unit">µg/m³</span>
+        </div>
+        <div class="pollutant-item">
+          <span class="label">PM10</span>
+          <span class="value" id="pm10"></span>
+          <span class="unit">µg/m³</span>
+        </div>
+      </div>
+
+      <div id="recommendation" class="recommendation"></div>
+
+      <div class="disclaimer">
+        ⚠️ ข้อมูลนี้เป็นคำแนะนำเบื้องต้นเท่านั้น ไม่ใช่การวินิจฉัยโรค
+        หากมีอาการผิดปกติ ควรปรึกษาบุคลากรทางการแพทย์
+        <br>แหล่งข้อมูล: Open-Meteo Air Quality API
+      </div>
+    </div>
+
+    <div id="lastCheckSection" class="last-check hidden">
+      <h3>📌 ผลการตรวจสอบล่าสุดที่บันทึกไว้</h3>
+      <p id="lastCheckText"></p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
