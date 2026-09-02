@@ -1,0 +1,140 @@
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; }
+
+body {
+  background: linear-gradient(135deg, #a8e6cf, #56ab91);
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 16px;
+  padding: 30px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+h1 { text-align: center; color: #2d6a4f; margin-bottom: 6px; }
+.subtitle { text-align: center; color: #636e72; margin-bottom: 20px; }
+
+.form-group { display: flex; flex-direction: column; gap: 14px; margin-bottom: 20px; }
+.field { display: flex; flex-direction: column; gap: 6px; }
+label { font-weight: 600; color: #2d3436; font-size: 14px; }
+
+select {
+  padding: 12px;
+  border-radius: 8px;
+  border: 2px solid #dfe6e9;
+  font-size: 16px;
+}
+
+button {
+  padding: 14px;
+  background: #2d6a4f;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  font-weight: 600;
+}
+button:hover { background: #235c42; }
+
+.state {
+  text-align: center;
+  padding: 20px;
+  border-radius: 8px;
+  margin: 10px 0;
+  font-size: 16px;
+  background: #dfe6e9;
+}
+.state.error { background: #fab1a0; color: #d63031; }
+.hidden { display: none; }
+
+#retryBtn {
+  margin-top: 10px;
+  padding: 8px 16px;
+  width: auto;
+  display: inline-block;
+}
+
+.card { margin-top: 20px; }
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+.card-header h2 { color: #2d3436; }
+.card-header span { color: #636e72; font-size: 14px; }
+
+.aqi-banner {
+  text-align: center;
+  padding: 24px;
+  border-radius: 12px;
+  margin-bottom: 16px;
+  color: white;
+}
+.aqi-number { font-size: 48px; font-weight: bold; }
+.aqi-level { font-size: 20px; margin-top: 6px; }
+
+/* สีตามระดับ AQI */
+.level-green { background: #27ae60; }
+.level-yellow { background: #f1c40f; color: #2d3436; }
+.level-orange { background: #e67e22; }
+.level-red { background: #e74c3c; }
+.level-purple { background: #8e44ad; }
+.level-brown { background: #6b4226; }
+
+.pollutant-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.pollutant-item {
+  background: #f5f6fa;
+  padding: 16px;
+  border-radius: 8px;
+  text-align: center;
+}
+.pollutant-item .label { display: block; font-size: 13px; color: #636e72; }
+.pollutant-item .value { display: block; font-size: 28px; font-weight: bold; color: #2d3436; margin: 4px 0; }
+.pollutant-item .unit { font-size: 12px; color: #b2bec3; }
+
+.recommendation {
+  background: #ffeaa7;
+  padding: 16px;
+  border-radius: 8px;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 12px;
+  line-height: 1.6;
+}
+
+.disclaimer {
+  font-size: 12px;
+  color: #636e72;
+  text-align: center;
+  line-height: 1.6;
+  border-top: 1px solid #dfe6e9;
+  padding-top: 12px;
+}
+
+.last-check {
+  margin-top: 20px;
+  padding: 16px;
+  background: #eef7ff;
+  border-radius: 8px;
+  border-left: 4px solid #0984e3;
+}
+.last-check h3 { font-size: 14px; margin-bottom: 8px; color: #2d3436; }
+.last-check p { font-size: 13px; color: #636e72; }
+
+@media (max-width: 480px) {
+  .pollutant-grid { grid-template-columns: 1fr; }
+  .card-header { flex-direction: column; align-items: flex-start; gap: 4px; }
+}
